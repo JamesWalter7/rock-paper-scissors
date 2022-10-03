@@ -1,0 +1,30 @@
+body {
+    background-color:rgb(251, 255, 248);
+}
+.options{
+    display: flex;
+    margin-top: 300px;
+    justify-content: space-evenly;
+}
+button{
+    padding: 50px;
+    border-radius: 7px;
+    font-family:sans-serif;
+    font-size: 40px;
+    background-color:rgb(189, 156, 66);
+}
+.whole{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.result{
+    display: flex;
+    justify-content: center;
+    outline: 5px solid black;
+    margin: 0px 300px;
+    background-color: darkkhaki;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 32px;
+}
