@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Rock_Paper_Scissors</title>
-        <link rel="stylesheet" href="style.css">
-        <script type = "text/javascript" src = "javascript.js" defer></script>
-    </head>
-    <body>
-        <div class="whole">
-        <div class="options">
-            <button class="rock">Rock</button>
-            <button class="paper">Paper</button>
-            <button class="scissors">Scissor</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="script.js" defer></script>
+    <div id="root">
+        <div id="rounds-line">
+            <div id="rounds-wrapper">
+                <div id="rounds-heading">Rounds-Remaining</div>
+                <div id="rounds-remaining">0</div>
+            </div>
         </div>
-        <div class="test">
-                 <div class="result">result</div>
+
+        <div id="score-wrapper">
+            <div id="score-heading">SCORE</div>
+            <div id="score">
+                <div id="user-score"></div>
+                <div id="computer-score"></div>
+            </div>
         </div>
+        <div id="playing-area-wrapper">
+            <div id="playing-area">
+                <button id="rock">ROCK</button>
+                <button id="paper">PAPER</button>
+                <button id="scissor">SCISSOR</button>
+            </div>
         </div>
-    </body>
+        <div id="new-round-button-wrapper">
+            <button id="new-round">Play Again</button>
+        </div>
+    </div>
+</body>
 </html>
