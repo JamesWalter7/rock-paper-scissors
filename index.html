@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="script.js" defer></script>
+    <script src="javascript.js" defer></script>
     <div id="root">
         <div id="rounds-line">
             <div id="rounds-wrapper">
@@ -17,10 +17,14 @@
         </div>
 
         <div id="score-wrapper">
-            <div id="score-heading">SCORE</div>
+            <div id="score-text">SCORE</div>
+            <div id="score-heading">
+                <div id="user">User</div>
+                <div id="computer">Computer</div>
+            </div>
             <div id="score">
-                <div id="user-score"></div>
-                <div id="computer-score"></div>
+                <div id="user-score">0</div>
+                <div id="computer-score">0</div>
             </div>
         </div>
         <div id="playing-area-wrapper">
@@ -29,6 +33,7 @@
                 <button id="paper">PAPER</button>
                 <button id="scissor">SCISSOR</button>
             </div>
+            <div id="dialogue-box"></div>
         </div>
         <div id="new-round-button-wrapper">
             <button id="new-round">Play Again</button>

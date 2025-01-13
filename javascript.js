@@ -1,71 +1,112 @@
 //Assume rock = 1, paper = 2, scissor = 3;
 //Create two vairables to store users choice and computers choice.
-let computers_choice = () => (Math.floor(Math.random()* 3)) + 1;
-let users_choice = () => {
-    let temp = (prompt("Rock, Paper or Scissor!, this is an endless loop unless you enter the correct values")).toLowerCase();
-    if(temp === 'rock') {
-        return 1;
-    }else if(temp == 'paper') {
-        return 2;
-    }else if(temp == 'scissor') {
-        return 3;
-    }else{
-        return users_choice();
-    }
-}
+let choices = ["rock", "paper", "scissor"];
+let computers_choice = () => choices[(Math.floor(Math.random()* 3))];
+
+let playing_area = document.querySelector("#playing-area");
+playing_area.addEventListener("click", (e) => {
+    let users_choice = e.target.id;
+    let comp_choice = computers_choice();
+    play_round(comp_choice, users_choice);
+});
 //Create two variables to store the score of user and computer.
-let computers_score = 0;
-let users_score = 0;
+let computers_score = document.querySelector("#computer-score");
+let users_score = document.querySelector("#user-score");
+let rounds_remaining = document.querySelector("#rounds-remaining");
+let play_again = document.querySelector("#new-round");
+let session_active = true;
+play_again.addEventListener("click", reset);
+
+computers_score.textContent = 0;
+users_score.textContent = 0;
+rounds_remaining.textContent = 5;
 
 //Write a compare function which to decide the winner and to update the score of based on the result.
-function compare(comp, usr) {
-    //computer choses rock
-    if(comp === 1) {
-        if(usr === 2) {
-            console.log("Paper beats Rock\n");
-            users_score++;
-        }else if(usr === 3) {
-            console.log("Alas!, your scissor is no more\n");
-            computers_score++;
-        }else{
-            console.log("If you can't beat them join them\n");
-        }
-    //computer choses paper
-    }else if(comp === 2) {
-        if(usr === 1) {
-            console.log("Rock is afraid of Paper\n");
-            computers_score++;
-        }else if(usr === 3) {
-            console.log("Scissor is the way to go when dealing with paper\n");
-            users_score++;
-        }else{
-            console.log("Seems like you both want to end the war, but in the process are wasting paper\n");
-        }
-    //computer choses scissor
-    }else if(comp === 3) {
-        if(usr === 1) {
-            console.log("Yay get that Scissor\n");
-            users_score++;
-        }else if(usr === 2) {
-            console.log("Nah Paper doens't stand a chance against Scissor\n");
-            computers_score++;
-        }else{
-            console.log("Scissor against Scissor, hmmm interesting\n");
-        }
+function play_round(comp, usr) {
+    if(session_active === false) {
+        alert("To play again press the play again button at the bottom.");
+        return;
+    }
+    rnds_rmng = parseInt(rounds_remaining.textContent);
+    rnds_rmng--;
+    rounds_remaining.textContent = rnds_rmng;
+    compare(comp, usr);
+    if(rnds_rmng === 0) {
+        session_active = false;
+        declare_winner();
     }
 }
-//Write a play round function which will ask both user and computer to play.
-function play_round() {
-    compare(computers_choice(), users_choice());
+function compare(comp, usr) {
+    console.log(`computers_choice: ${comp}`);
+    console.log(`users_choice: ${usr}`);
+    let dialogue;
+    //computer choses rock
+    if(comp === 'rock') {
+        if(usr === 'paper') {
+            dialogue = "Paper beats Rock";
+            increase_users_points();
+        }else if(usr === 'scissor') {
+            dialogue = "Alas!, your scissor is no more";
+            increase_computers_points();
+        }else{
+            dialogue = "If you can't beat them join them";
+        }
+    //computer choses paper
+    }else if(comp === 'paper') {
+        if(usr === 'rock') {
+            dialogue = "Rock is afraid of Paper";
+            increase_computers_points();
+        }else if(usr === 'scissor') {
+            dialogue = "Scissor is the way to go when dealing with paper";
+            increase_users_points();
+        }else{
+            dialogue = "Seems like you both want to end the war, but in the process are wasting paper";
+        }
+    //computer choses scissor
+    }else if(comp === 'scissor') {
+        if(usr === 'rock') {
+            dialogue = "Yay get that Scissor";
+            increase_users_points();
+        }else if(usr === 'rock') {
+            dialogue = "Nah Paper doens't stand a chance against Scissor";
+            increase_computers_points();
+        }else{
+            dialogue = "Scissor against Scissor, hmmm interesting";
+        }
+    }
+    dialogue_box = document.querySelector("#dialogue-box");
+    console.log(dialogue);
+    dialogue_box.textContent = dialogue;
 }
-//Write a loop to play the game n number of times.
-for(let a = 0; a < 5; a++) {
-    setTimeout(play_round(), 3000);
+function increase_users_points() {
+    let a = parseInt(users_score.textContent);
+    a++;
+    users_score.textContent = a;
 }
-if(users_score > computers_score) {
-    console.log(`You won score is ${users_score} : ${computers_score}`);
-}else if (users_score < computers_score){
-    console.log(`You lost score is ${users_score} : ${computers_score}`);
-}else{
-    console.log(`You guys tied up, ${users_score} : ${computers_score}`);
+function increase_computers_points() {
+    let a = parseInt(computers_score.textContent);
+    a++;
+    computers_score.textContent = a;
+}
+function reset() {
+    session_active = true;
+    users_score.textContent = 0;
+    computers_score.textContent = 0;
+    rounds_remaining.textContent = 5;
+    (document.querySelector("#dialogue-box")).textContent = "";
+}
+
+function declare_winner() {
+    let usr_sc = parseInt(users_score.textContent);
+    let cmp_sc = parseInt(computers_score.textContent);
+    let dialogue;
+    if(usr_sc > cmp_sc) {
+        dialogue = `You won score is ${usr_sc} : ${cmp_sc}`;
+    }else if (usr_sc < cmp_sc){
+        dialogue = `You lost score is ${usr_sc} : ${cmp_sc}`;   
+    }else{
+        dialogue = `You guys tied up, ${usr_sc} : ${cmp_sc}`;
+    }
+    (document.querySelector("#dialogue-box")).textContent = dialogue;
+    console.log(dialogue);
 }

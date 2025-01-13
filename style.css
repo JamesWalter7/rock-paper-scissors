@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Courier New', Courier, monospace;
 }
 html, body {
     height: 100vh;
@@ -8,6 +9,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to bottom, rgba(0, 50, 90, 0.9), rgba(30, 30, 70, 0.8));
     background-color:rgba(8, 24, 20, 0.938);
 }
 #root{
@@ -17,32 +19,101 @@ html, body {
     width: 70%;
     min-width: 800px;
     max-height: 800px;
+    padding: 5px;
     outline: 2px solid red;
 }
-#root div{
-    outline: 2px solid green;
-}
-#current-round-calc-wrapper{
+#rounds-line{
     flex: 3;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    background: linear-gradient(to bottom, rgb(204, 25, 50), rgb(255, 87, 51));
 }
-#current-round-calculator{
+#rounds-wrapper{
     height: 100%;
     width: 30%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(230, 227, 56);
+    border-radius: 10px;
+    gap: 10px
+}
+#rounds-heading{
+    font-size: 1.5rem;
+}
+#rounds-remaining{
+    font-size: 2rem;
 }
 #score-wrapper{
     flex: 4;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+#score-wrapper div{
+    display: flex;
+    flex: 1;
+}
+#score-wrapper div div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+#score-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    background: linear-gradient(to bottom, rgb(255, 87, 51), rgb(255, 155, 91));
+}
+#score-heading{
+    background: linear-gradient(to bottom, rgb(255, 155, 91), rgb(155, 155, 91));
+}
+#score{
+    background: linear-gradient(to bottom, rgb(155, 155, 91), rgb(100, 155, 91));
+
 }
 #playing-area-wrapper{
     flex: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    background: linear-gradient(to bottom, rgb(100, 155, 91), rgb(25, 70, 195));
 }
-#new-round-button-wrapper{
+#playing-area{
+    width: 100%;
+    display:flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin: 10px;
+    margin-bottom: 40px;
+}
+#playing-area button{
+    padding: 60px;
+    font-size: 30px;
     flex: 1;
 }
-
+#dialogue-box{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+    color: cornsilk;
+    width: 100%;
+    margin-bottom: auto;
+}
+#new-round-button-wrapper{
+    background: linear-gradient(to bottom, rgb(25, 70, 195), rgba(0, 30, 60, 0.9));
+    flex: 1.4;
+    display: flex;
+    justify-content: center;
+}
+#new-round{
+    margin: 0 30px 10px 30px;
+    padding: 3px 30px;
+}
