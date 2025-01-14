@@ -67,7 +67,7 @@ function compare(comp, usr) {
         if(usr === 'rock') {
             dialogue = "Yay get that Scissor";
             increase_users_points();
-        }else if(usr === 'rock') {
+        }else if(usr === 'paper') {
             dialogue = "Nah Paper doens't stand a chance against Scissor";
             increase_computers_points();
         }else{
